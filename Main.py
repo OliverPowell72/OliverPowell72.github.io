@@ -8,7 +8,11 @@ def home():
 
 @app.route("/<user>")
 def user(usr):
- return f"<h1>{usr}</h1>"
+    return f"<h1>{usr}</h1>"
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
  
 @app.route("/login", methods=["POST", "GET"])
 def login():
