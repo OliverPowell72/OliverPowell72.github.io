@@ -4,7 +4,13 @@ app = Flask(__name__)
  
 @app.route("/")
 def home():
-    return render_template("index.html")
+	if request.method == "POST":
+		if request.form.get("Signup"):
+			return redirect(url_for("/signup")
+		elif request.form.get("Login"):
+			return redirect(url_for("/login")
+	elif request.method == "GET":
+			return render_template("index.html")
 
 @app.route("/<user>")
 def user(usr):
