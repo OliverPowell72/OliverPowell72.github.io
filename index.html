@@ -8,7 +8,7 @@
 
 
 
-def submit(): 
+{%def submit():%}
 	if request.method == "POST":
 		if request.form.get("Signup"):
 			return redirect(url_for("/signup")
