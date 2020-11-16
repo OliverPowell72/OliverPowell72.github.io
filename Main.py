@@ -26,7 +26,7 @@ def user():
 		user = session["user"]
     		return f"<h1>{user}</h1>"
 	else:
-		return redirecr(url_for("login.html"))
+		return redirecr(url_for("login"))
  
 if __name__ == "__main__":
     app.run(debug=True)
