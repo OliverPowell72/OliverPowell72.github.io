@@ -2,17 +2,17 @@
 <h1>Welcome</h1>
 
 <form method ="post" action="/">
-  <button type="submit" name="Signup" value="submit"> </button>
-  <button type="submit" name="Login" value="submit"> </button>
+  <button type="submit" name="Signup" value="submit"> Signup </button>
+  <button type="submit" name="Login" value="submit"> Login </button>
 </form> 
 
 
 
 def submit(): 
 	if request.method == "POST":
-		if request.form.get("submit_a"):
-			# do something
-		elif request.form.get("submit_b"):
-			# do something else
+		if request.form.get("Signup"):
+			return redirect(url_for("/signup")
+		elif request.form.get("Login"):
+			return redirect(url_for("/login")
 	elif request.method == "GET":
-			# do something
+			return render_template("index.html")
