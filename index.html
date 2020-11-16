@@ -5,14 +5,3 @@
   <button type="submit" name="Signup" value="submit"> Signup </button>
   <button type="submit" name="Login" value="submit"> Login </button>
 </form> 
-
-
-
-{%def submit():%}
-	if request.method == "POST":
-		if request.form.get("Signup"):
-			return redirect(url_for("/signup")
-		elif request.form.get("Login"):
-			return redirect(url_for("/login")
-	elif request.method == "GET":
-			return render_template("index.html")
