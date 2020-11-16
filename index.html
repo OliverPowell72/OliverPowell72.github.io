@@ -1,2 +1,18 @@
 <Title>Music Taste Matching Website</Title>
 <h1>Welcome</h1>
+
+<form method ="post" action="/">
+  <button type="submit" name="Signup" value="submit_a"> Submit_a </button>
+  <button type="submit" name="Login" value="submit_b"> Submit_b </button>
+</form> 
+
+
+
+def submit(): 
+	if request.method == "POST":
+		if request.form.get("submit_a"):
+			# do something
+		elif request.form.get("submit_b"):
+			# do something else
+	elif request.method == "GET":
+			# do something
