@@ -5,9 +5,9 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def home():
 	if request.method == "POST":
-		if request.form.get("Signup"):
+		if "S" in request.form:
 			return redirect(url_for("signup")
-		elif request.form.get("Login"):
+		elif "L" in request.form:
 			return redirect(url_for("login")
 	else:
 		return render_template("index.html")
