@@ -6,10 +6,6 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
  
-@app.route("/test")
-def test():
-    return render_template("new.html")
- 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
