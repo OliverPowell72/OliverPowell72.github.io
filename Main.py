@@ -1,5 +1,10 @@
 from flask import Flask, redirect, url_for, render_template, request, session
  
+class User:
+	def __init__(self, id, username, password):
+		self.id = id
+		self.username = username
+	
 app = Flask(__name__)
 app.secret_key = "hello"
 
@@ -13,20 +18,12 @@ def signup():
  
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    if request.method == "POST":
-        user = request.form["nm"]
-	session["user"] = user
-        return redirect(url_for("user"))
-    else:
-        return render_template("login.html")
+	return render_template("login.html")
 
-@app.route("/user")
+@app.route("/profile")
 def user():
-	if "user" in session:
-		user = session["user"]
-    		return f"<h1>{user}</h1>"
-	else:
-		return redirect(url_for("login"))
+	return render_template("profile.html")
+
  
 if __name__ == "__main__":
     app.run(debug=True)
