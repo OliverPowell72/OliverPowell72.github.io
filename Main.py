@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request, session
+from flask import Flask, redirect, url_for, render_template, request, session, g
  
 class User:
 	def __init__(self, id, username, password):
@@ -14,7 +14,13 @@ users.append(User(id=1, username = "ollie", password = "password"))
 users.append(User(id=2, username = "ro", password = "secret"))
 
 app = Flask(__name__)
-app.secret_key = "hello"
+app.secret_key = "akeythatshouldbesecret"
+
+@app.before_request
+def before_request():
+	if "user_id" in session:
+		user = [x for x in users if x.id == session["user_id"]][0]
+		g.user = user
 
 @app.route("/")
 def home():
