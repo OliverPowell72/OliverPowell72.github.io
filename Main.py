@@ -11,8 +11,9 @@ class User:
 	
 users = []
 users.append(User(id=1, username = "ollie", password = "password"))
+users.append(User(id=2, username = "ro", password = "secret"))
 
-print(users)
+print(users[1].password)
 
 app = Flask(__name__)
 app.secret_key = "hello"
