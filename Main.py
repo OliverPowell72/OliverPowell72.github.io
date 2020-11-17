@@ -25,6 +25,18 @@ def signup():
  
 @app.route("/login", methods=["POST", "GET"])
 def login():
+	if request.method == "POST":
+		session.pop("user_id", None)
+		username = request.form["username"]
+		password = request.form["password"]
+		
+		user = [x for x in users if x.username == username][0]
+		if user and user.password == password:
+			session["user_id"] = user.id
+			return redirect(url_for("profile"))
+		
+		return redirect(url_for("login"))
+	
 	return render_template("login.html")
 
 @app.route("/profile")
