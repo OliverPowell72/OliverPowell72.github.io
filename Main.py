@@ -18,6 +18,8 @@ app.secret_key = "akeythatshouldbesecret"
 
 @app.before_request
 def before_request():
+	g.user = None
+	
 	if "user_id" in session:
 		user = [x for x in users if x.id == session["user_id"]][0]
 		g.user = user
@@ -34,6 +36,7 @@ def signup():
 def login():
 	if request.method == "POST":
 		session.pop("user_id", None)
+		
 		username = request.form["username"]
 		password = request.form["password"]
 		
@@ -47,7 +50,10 @@ def login():
 	return render_template("login.html")
 
 @app.route("/profile")
-def user():
+def profile():
+	if not g.user:
+		return redirect(url_for("login"))
+	
 	return render_template("profile.html")
  
 if __name__ == "__main__":
